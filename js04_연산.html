@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 변수의 형태 (자료형)
+        var 정수 = 3
+        var 실수 = 3.14
+        var 문자열 = "문자 나열"
+
+        // 사칙연산 정수 또는 실수
+        var 더하기 = 3+3    // 6
+        var 빼기 = 10-8     // 2
+        var 곱하기 = 3*3    // 9
+        var 나누기 = 10/3   // 3
+        var 나머지 = 10%3   // 1 (remainder)
+        
+        // 변수는 = 기준으로 오른쪽에서는 값으로, 왼쪽에서는 공간으로 사용됨
+        var 몇일까요 = 곱하기 + 나누기
+        console.log(몇일까요)   // 12
+        
+        // 오른쪽에 있는 정수는 3이라는 값으로, 왼쪽 변수는 공간으로 사용됨
+        var 변수 = 정수
+        변수 = 변수     // 오른쪽 변수와 왼쪽 변수는 다르다!
+        console.log(변수) // 3
+
+        var 숫자 = 4
+        숫자 = 숫자     // 4를 숫자에 담아라
+        숫자 = 숫자+1   // 5
+        숫자++          // 숫자안의 값을 1 늘려라
+        숫자--
+
+        숫자 = 4
+        숫자 = 숫자+3
+        숫자 += 3
+        숫자 -= 3
+        숫자 *= 3
+        숫자 /= 3
+        숫자 %= 3
+                
+    </script>
+    
+</body>
+</html>
