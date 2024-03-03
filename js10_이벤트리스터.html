@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수와함수</title>
+    <style>
+        .box-class {
+            padding: 15px;
+            background-color: yellowgreen;
+            border-radius: 5px;
+            display: none;
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box-class" id="box-id">
+        <p id="box-text">버튼을 누르면 창이 열립니다</p>
+        <button onclick="상자닫기()">닫기</button>
+    </div>
+    <button onclick="상자열기('아이디를 입력하세요.')">열기</button>
+    <button onclick="상자열기('비밀번호를 입력하세요.')">열기2</button>
+    <!-- 열기 > 아이디를 입력하세요 -->
+    <!-- 열기2 > 비밀번호를 입력하세요 -->
+
+
+    <script>
+        // 함수 function : 코드를 저장하는 공간
+        // 함수명() 에서 그때그때 바꿔주고 싶은 부분이 있다면, 소괄호안에 매개변수 적용
+        function 상자열기(매개변수) {
+            document.getElementById("box-text").innerHTML = 매개변수;
+            document.getElementById("box-id").style.display='block';
+        }
+        function 상자닫기() {
+            document.getElementById("box-id").style.display='none';
+            // 변수 var, let, const : 값을 저장하는 공간
+            // const boxElement = document.getElementById("box-id"); // const 상수 : 변하지 않는 값
+            // boxElement.style.display = "none";
+        }
+
+        // box-id 클릭하면 글자색 붉은색으로
+        // box-id 클릭하면 그 때 함수 동작시켜줘
+        // 콜백함수 : 매개변수로 쓰이는 함수
+        document.getElementById("box-id").addEventListener('click',function() {
+            document.getElementById("box-text").style.color = 'white';
+            document.getElementById("box-text").style.fontSize = '30px';
+        })
+
+        // 박스에 마우스 올리면 배경을 좀 더 진하게 바꿔줘
+        document.getElementById('box-id').addEventListener('mouseover',function() {
+            document.getElementById('box-id').style.background = 'green';
+        })
+
+        // 나가면 원래 색으로 바꿔줘
+        document.getElementById('box-id').addEventListener('mouseleave',function() {
+            document.getElementById('box-id').style.background = 'yellowgreen';
+        })
+
+        // 클릭 중일때 더 진하게 바꿔줘
+        document.getElementById('box-id').addEventListener('mousedown',function() {
+            document.getElementById('box-id').style.background = 'blue';
+        })
+
+        document.getElementById('box-id').addEventListener('mouseup',function() {
+            document.getElementById('box-id').style.background = 'green';
+        })
+    </script>
+    
+</body>
+</html>

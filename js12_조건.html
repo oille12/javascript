@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .top-nav {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 80px;
+            background-color: rgb(230, 230, 230);
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-nav ul {
+            margin-right: 80px;
+            display: flex;
+            align-items: center;
+        }
+        .top-nav li {
+            display: inline-block;
+            padding-left: 30px;
+            cursor: pointer;
+        }
+        .top-nav li:hover {
+            text-decoration: underline;
+            color: green;
+        }
+        #top-logo {
+            height: 50px;
+            cursor: pointer;
+        }
+        .down-nav {
+            height: 0px;
+            background-color: black;
+            color: white;
+            display: flex;
+            visibility: hidden;
+            z-index: 5;
+        }
+        .down-nav div {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 80px;
+        }
+        .down-nav ul {
+            padding-left: 0;
+        }
+        .down-nav ul li {
+            list-style: none;
+            padding-bottom: 4px;            
+        }
+        .down-nav ul li:hover {
+            text-decoration: underline;
+            color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 : 로고 클릭하면 드랍박스 보이게 -->
+    <div class="top-nav">
+        <img id="top-logo" src="https://www.starbucks.co.kr/common/img/common/logo.png" alt="">
+        <ul>
+            <li>커피</li>
+            <li>라떼</li>
+            <li>주스</li>
+            <li>티</li>
+        </ul>
+    </div>
+    <div class="down-nav" id="down-nav">
+        <div>
+            <h3>커피</h3>
+            <ul>
+                <li>아메리카노</li>
+                <li>콜들브루</li>
+            </ul>
+        </div>
+        <div>
+            <h3>라떼</h3>
+            <ul>
+                <li>카페라떼</li>
+                <li>콜드브루라떼</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var down_nav_flag = 0   // 변수 생성
+
+        document.getElementById('top-logo').addEventListener('click', function() {
+            if(down_nav_flag === 0) {
+                down_nav_flag = 1
+                document.getElementById('down-nav').style.height='auto';
+                document.getElementById('down-nav').style.visibility='visible';
+            } else if(down_nav_flag === 1){
+                down_nav_flag = 0
+                document.getElementById('down-nav').style.height='0';
+                document.getElementById('down-nav').style.visibility='hidden';
+            }
+        })
+    </script>
+    
+</body>
+</html>
