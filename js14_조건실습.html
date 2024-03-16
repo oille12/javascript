@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건 실습</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+        .header {
+            height: 60px;
+            background-color: rgb(236, 236, 236);
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .logo {
+            cursor: pointer;
+        }
+        .header-list li {
+            display: inline-block;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        .header-list li:hover {
+            text-decoration: underline;
+        }
+        .drop-menu {
+            background-color: #333;
+            color: white;
+            display: none;
+            /* z축으로 띄우기 */
+            z-index: 5;
+            /* 위치 고정 >> 다음 요소 안밀리게 하기 위해서 */
+            position: fixed;
+            width: 100%;            
+            /*
+                position
+                    static (기본값)
+                    relative (내 위치를 기준)
+                    absolute (relative 부모 기준)
+                    fixed (내 화면 기준)
+                    sticky (내가 보는 현재화면(스크롤) 기준)
+            */
+        }
+        .drop-menu div {
+            display: inline-block;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+        .drop-menu ul {
+            list-style: none;
+            padding: 0;
+            line-height: 1.4;            
+        }
+        .back-black {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed; /* 전체화면 기준으로 동작 (z-index 사용 가능해짐) */
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+
+            height: 0;
+            opacity: 0;
+            visibility: hidden;
+
+            transition: all 0.5s;
+            
+            /*
+            height: 100%;  
+            visibility: collapse; 
+            opacity: 80%;
+            */
+        }
+        .back-white {
+            background-color: white;
+            width: 400px;
+            height: 400px;
+            padding: 30px;
+        }
+        .back-white input[type="text"],
+        .back-white input[type="password"] {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+    
+    <div class="header">
+        <div id="top-logo">로고</div>
+        <div class="header-list">
+            <ul id="top-show-down">
+                <li>Coffee</li>
+                <li>Latte</li>
+                <li>etc</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="drop-menu">
+        <div class="coffee">
+            <h3>Coffee</h3>
+            <ul>
+                <li>아메리카노</li>
+                <li>콜드브루</li>
+                <li>에스프레소</li>
+            </ul>
+        </div>
+        <div class="Latte">
+            <h3>Latte</h3>            
+            <ul>
+                <li>카페라떼</li>
+                <li>바닐라라떼</li>
+                <li>헤이즐넛라떼</li>
+            </ul>
+        </div>
+    </div>
+    <button onclick="doModal()">새로운 창 열기</button>
+    <div class="back-black">
+        <div class="back-white">
+            <h4>제목</h4>
+            <form action="">
+                <input type="text" placeholder="아이디를 입력하세요">
+                <input type="password" placeholder="비밀번호를 입력하세요">
+                <!-- submit : 백엔드로 전달 -->
+                <!-- button : 백엔드로 전달 안할때 -->
+                <input type="submit" value="로그인">
+                <input type="button" value="닫기" onclick="closeModal()">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var 상태체크 = false;
+
+        document.getElementById("top-logo").addEventListener('click', function(){
+            // 콜백함수 : 매개변수로 사용되는 함수
+            if (상태체크 === false) {
+                document.querySelector('.drop-menu').style.display = 'flex';
+                상태체크 = true;
+            } else {
+                document.querySelector('.drop-menu').style.display = 'none';
+                상태체크 = false;
+            }
+        })
+
+        document.getElementById("top-show-down").addEventListener('mouseover', function() {
+            if (상태체크 === false) {
+                document.querySelector('.drop-menu').style.display = 'flex';
+                상태체크 = true;
+            }
+        })
+        document.getElementById("top-show-down").addEventListener('mouseleave', function() {
+            if (상태체크 === true) {
+                document.querySelector('.drop-menu').style.display = 'none';
+                상태체크 = false;
+            }
+        })
+
+        function doModal() {
+            // 평소에는 숨겨놓은 창을 보여주게 바꾸기
+            /*
+            height: 100%;  
+            visibility: collapse; 
+            opacity: 80%;
+            */
+           document.querySelector('.back-black').style.visibility = 'visible';
+           document.querySelector('.back-black').style.height = '100%';
+           document.querySelector('.back-black').style.opacity = '100%';
+        }
+
+        function closeModal() {
+           document.querySelector('.back-black').style.visibility = 'hidden';
+           document.querySelector('.back-black').style.height = '0';
+           document.querySelector('.back-black').style.opacity = '0';            
+        }
+    </script>
+</body>
+</html>
