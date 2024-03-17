@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭 기능 만들기</title>
+</head>
+<body>
+    <style>
+        .tab-container{
+          width:400px;
+          height:300px;
+        }
+    
+        .tab-container ul{
+          font-size:0;
+          padding:0;
+        }
+    
+        .tab-container li{
+          font-size:16px;
+          display:inline-block;
+          padding:10px 30px;
+          border-bottom: 1px solid lightgrey;
+        }
+    
+        .tab-selected
+        {
+          border: 1px solid lightgrey;
+          border-top:2px solid orange;
+          border-bottom: 0 !important;
+        }
+    
+        .display-none{
+          display:none;
+        }
+    
+        .tab_button{
+    
+        }
+    
+        .tab_content{
+        }
+      </style>
+    </head>
+    <body>
+      <div class="tab-container">
+        <ul>
+          <li class="tab_button tab-selected">탭1</li>
+          <li class="tab_button">탭2</li>
+          <li class="tab_button">탭3</li>
+        </ul>
+    
+        <div class="tab_content">
+          탭1 내용
+        </div>
+        <div class="tab_content display-none">
+          탭2 내용
+        </div>
+        <div class="tab_content display-none">
+          탭3 내용
+        </div>
+      </div>
+
+    <script>
+        var 탭버튼개수 = document.querySelectorAll('.tab_button').length;
+        var 탭내용개수 = document.querySelectorAll('.tab_content').length;
+
+        for (let i=0; i<탭버튼개수; i++) {
+            document.querySelectorAll('.tab_button')[i].addEventListener('click',function() {
+                for(let j=0; j<탭내용개수; j++) {
+                    document.querySelectorAll('.tab_content')[j].classList.add('display-none')
+                    document.querySelectorAll('.tab_button')[j].classList.remove('tab-selected')
+                }
+                document.querySelectorAll('.tab_content')[i].classList.remove('display-none')
+                document.querySelectorAll('.tab_button')[i].classList.add('tab-selected')
+            })
+        }
+    </script>
+    
+</body>
+</html>
