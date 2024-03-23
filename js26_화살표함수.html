@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        background-color: lightgrey;
+    }
+    .container-content {
+        height: 800px;
+        border: 2px solid yellowgreen;
+    }
+    .container-nav {
+        height: 80px;
+        background-color: lightgoldenrodyellow;
+        justify-content: space-between;
+        display: flex;
+        padding: 0 25px; /* 위아래는 0, 양옆은 25px */
+        z-index: 15;
+        position: fixed;
+        width: 100%;
+        box-sizing: border-box;
+        transition: all 0.5s;
+    }
+    .container-nav h3 {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+    }
+    .container-nav ul {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+    .container-nav li {
+        display: inline-block;
+        margin-left: 16px;
+    }
+    .container-nav a {
+        text-decoration: none;
+        color: black;
+    }
+    .container-nav a:hover{
+        text-decoration: underline;
+    }
+    .sticky-box {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+        position: sticky;
+        top: 100px;
+        left: 70%;
+    }
+    .ads {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        position: sticky;
+        top: 100px;
+        left: 80%;
+    }
+</style>
+<body>
+    <div class="container-nav">
+        <h3>로고</h3>
+        <ul>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">소개</a></li>
+        </ul>
+    </div>
+    <div style="height: 80px;"></div>
+    <div class="ads">광고</div>
+    
+    <div class="container-content">
+        <div class="sticky-box">스티키</div>
+    </div>
+    
+    <div class="container-content">
+        <div class="sticky-box">스티키</div>
+
+    </div>
+    
+    <div class="container-content">
+        <div class="sticky-box">스티키</div>
+
+    </div>
+
+
+    <script>
+        var 스크롤위치 = 0
+        var 로고 = document.querySelector('.container-nav h3')
+        window.addEventListener('scroll', () => {
+            스크롤위치 = window.scrollY
+            // console.log(스크롤위치)
+            if (스크롤위치 > 200) {
+                로고.style.fontSize = '24px';
+                로고.style.fontColor = 'grey';
+            } else {
+                로고.style.fontSize = '16px';
+                로고.style.fontColor = 'black';
+            }
+        })
+    </script>
+
+
+</body>
+</html>

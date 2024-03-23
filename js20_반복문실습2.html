@@ -53,6 +53,8 @@
     <button id="slide-btn-1">1</button>
     <button id="slide-btn-2">2</button>
     <button id="slide-btn-3">3</button>
+    <br><br>
+    <button id="toggle-auto-slide">스크롤 중지</button>
 
     <script>
     for (let i = 1; i <= 3; i++) {
@@ -65,9 +67,35 @@
     }
 
     
-    // 타이머 통해서 자동 가로스크롤 구현예정~
+    // 타이머 통해서 자동 가로스크롤 구현
+    var 자동스크롤 = true;
+    var curSlide = 0;
+    // setInterval : 내가 제공한 시간을 추가로 함수를 반복 실행
+    var 타이머저장공간 = 자동스크롤시작();
 
+    function 자동스크롤시작(){
+        return setInterval(function(){
+        // 슬라이드가 3개니까 0,1,2 안에서만 이동
+        curSlide = (curSlide+1)%3;  // 0~2 만 가능
+        // 기존 클래스이름 slider-page를 모두 제거하고, curSlide에 있는 값으로 클래스명을 추가한다.
+        document.querySelector('.slider-img').classList.remove('slider-page-1', 'slider-page-2', 'slider-page-3');
+        document.querySelector('.slider-img').classList.add(`slider-page-${curSlide+1}`)
+    }, 3000)
+    }
 
+    document.getElementById('toggle-auto-slide').addEventListener('click', function(){
+        if(자동스크롤 === true){
+            // 스크롤중이었다면 > 스크롤 멈춤, 버튼 이름변경, 상태변수 변경
+            clearInterval(타이머저장공간);
+            document.getElementById('toggle-auto-slide').innerHTML = '스크롤 시작';
+            자동스크롤 = false;
+        } else {
+            // 스크롤이 false이면 > 타이머 시작, 버튼 이름변경, 상태변수 변경
+            타이머저장공간 = 자동스크롤시작();
+            document.getElementById('toggle-auto-slide').innerHTML = '스크롤 중지';
+            자동스크롤 = true;
+        }
+    })
     </script>
 </body>
 </html>
