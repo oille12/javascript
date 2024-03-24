@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기로 Get요청하기</title>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        // https://httpbin.org/get
+        
+        // 웹이 다른 모바일이나 프로그램과 통신할 때 주로 HTTP통신(=웹통신)을 사용한다
+        // HTTP 통신 : 웹에다 요청하면 결과를 돌려준다
+
+        // Get : 웹에 요청하는데 보안이 낮음, 쉬움 => 정보 제공을 요청할때
+        // Post : 웹에 요청하는데 보안 높음, 복잡함 => 정보 저장을 요청할때 (중요정보)
+        // HTTP 통신을 하려면 상대방 웹 주소를 알아야 함
+
+        // AJAX : 기존에 띄워진 페이지는 가만히 두고 새로 제공되는 정보만 갱신
+        // 새로고침 없이 특정정보만 갱신하고 싶을 때 사용
+
+        // 비동기 (원래 작업은 두고 별도의 작업은 다른 곳에 맡김, 동시 처리)
+        fetch('https://httpbin.org/get')
+        .then(res => res.text())    // 응답받으면 텍스트로 리턴해라
+        .then(data => {
+            console.log(data)
+
+            var 변수 = `<p>${data}</p>`
+            document.getElementById('box').insertAdjacentHTML('beforeend',변수);
+        })
+        .catch(err => {
+            // 위에서 예외상황 발생하면 다 무시하고 여기로 들어옴
+            console.error('에러발생',err)   // 에러 기록
+        })
+
+        // 예외처리
+        //  일반적이지 않은 상황에 따른 대처
+        //  ex. 인터넷 안됨, 컴퓨터 과부하상태
+
+        // ----------------------------------------------------
+
+        fetch('https://httpbin.org/get')
+        .then(res => res.json())    // 응답받으면 json문자열로 리턴해라(객체로 리턴) (주로 쓰임)
+        .then(data => {
+            console.log(data)
+
+            var 변수 = `<h2>${data['url']}</h2>`    // url만 가져오기
+            document.getElementById('box').insertAdjacentHTML('beforeend',변수);
+        })
+        .catch(err => {
+            // 위에서 예외상황 발생하면 다 무시하고 여기로 들어옴
+            console.error('에러발생',err)   // 에러 기록
+        })
+
+    </script>
+    
+</body>
+</html>

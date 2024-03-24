@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 실습</title>
+</head>
+<body>
+    <button id="get-btn">get요청</button>
+    <button id="post-btn">post요청</button>
+    <button id="clear-btn">지우기</button>
+    <div id="box"></div>
+
+    <script>
+        document.getElementById('get-btn').addEventListener('click', () => {
+            fetch('https://httpbin.org/get')
+            .then(res => res.json())
+            .then(data => {
+                var 파싱 = `
+                <p>${JSON.stringify(data)}</p>
+                <h1>${data['url']}</h1>
+                <hr>
+                `
+                document.getElementById('box').insertAdjacentHTML('beforeend',파싱);
+            })
+            .catch(err => {
+                console.error('에러발생',err)
+            })
+        })
+
+        document.getElementById('post-btn').addEventListener('click', () => {
+            fetch('https://httpbin.org/post', {
+                method: 'POST',
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify(
+                    // '':''
+                )
+            })
+            .then(res => res.json())
+            .then(data => {
+                var 파싱 = `
+                <p>${JSON.stringify(data)}</p>
+                <h1>${data['url']}</h1>
+                <hr>
+                `
+                document.getElementById('box').insertAdjacentHTML('beforeend',파싱);
+            })
+            .catch(err => console.error('에러발생',err))
+        })
+        
+        document.getElementById('clear-btn').addEventListener('click', () => {
+            document.getElementById('box').innerHTML = '';
+        })
+        
+        // 변수의 스코프
+        // {} 안에서 만들어진 변수는 {}가 끝나면 삭제됨 >> 지역변수
+        // 함수 안에서 변수 만들면, 함수가 끝나면 해당 변수는 삭제됨
+        
+        // 따라서 get, post 내부에서 변수를 동일하게 사용해도 상관없다.
+        </script>
+</body>
+</html>
