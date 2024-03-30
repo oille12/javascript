@@ -1,0 +1,216 @@
+/* 폰트, body margin, .. */
+
+/* 설치한 폰트 적용 */
+@font-face {
+    font-family: '나눔';
+    src: url(./NanumSquareR.woff2);
+}
+
+body {
+    font-family: '나눔';
+    margin: 0;
+    background: black;
+}
+
+div, input, textarea {
+    box-sizing: border-box;
+}
+
+.top-nav {
+    background: rgb(246, 245, 239);
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    z-index: 8;
+}
+
+.top-nav-inner {
+    width: 1100px;
+    height: 120px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-nav, .second-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.first-nav li {
+    display: inline-block;
+    padding: 0 16px;
+    font-size: 13px;
+    border-right: 1px solid lightgray;
+}
+
+.first-nav a {
+    color: #333;
+    text-decoration: none;
+}
+
+.first-nav a:hover {
+    text-decoration: underline;
+}
+
+.no-border {
+    border-right: none !important;
+}
+
+.second-nav li {
+    display: inline-block;
+    font-size: 13px;
+}
+
+.second-nav a {
+    text-decoration: none;
+    color: #333;    
+    padding: 10px 10px 26px 12px;
+}
+
+.second-nav a:hover {
+    text-decoration: underline;
+    color: rgb(113, 185, 113);
+    background: rgb(44, 42, 41);
+}
+
+.down-nav {
+    background-color: rgb(44,42,41);
+    width: 100%;
+    transition: all 0.5s;
+    height: 0;  /* hover시 보이게 하기 */
+    visibility: hidden;
+    
+}
+
+.down-nav-inner {
+    display: flex !important;
+    width: 1100px;
+    margin: auto;
+    color: white;
+    padding: 15px;
+}
+
+.down-nav ul {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.down-nav li {
+    list-style-type: none;
+    font-size: small;
+    padding: 3p 10px;
+    color: lightgray;
+
+}
+
+.dump {
+    height: 120px;
+}
+
+.ads {
+    position: fixed;
+    background-image: url(./img/item1.png);
+    z-index: 5;
+    width: 140px;
+    height: 96px;
+    top: 20%;
+    left: 80%;
+}
+
+.section-1 {
+    width: 100%;
+    height: 32vw;
+    background-image: url(./img/section1.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.section-1 .img-text {
+    position: absolute;
+    left: 15%;
+    top: 28%;
+    width: 18vw;
+}
+
+.section-1 .product1 {
+    position: absolute;
+    left: 35%;
+    top: 30%;
+    width: 22vw;
+}
+
+.section-1 .product2 {
+    position: absolute;
+    left: 55%;
+    top: 16%;
+    width: 15vw;
+}
+
+.section-1 .product3 {
+    position: absolute;
+    left: 68%;
+    top: 19%;
+    width: 17vw;
+}
+
+.section-1-btn {
+    position: absolute;
+    left: 18%;
+    top: 68%;
+    background: transparent;
+    border: 2px solid green;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+.section-4 {
+    width: 100%;
+    height: 18vw;
+    background-image: url(./img/section4.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.section-5 {
+    width: 100%;
+    height: 15vw;
+    background-image: url(./img/section5.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.section-6 {
+    width: 100%;
+    height: 30vw;
+    background-image: url(./img/section6.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.section-7 {
+    width: 100%;
+    height: 15vw;
+    background-image: url(./img/section7.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.section-8 {
+    width: 100%;
+    height: 15vw;
+    background-image: url(./img/section8.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
