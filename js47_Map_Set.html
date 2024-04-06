@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Map, Set : 자바에서 사용하던 자료구조를 가져온 것
+        var 배열 = [1,2,3]
+        var 배열2 = new Array()
+
+        var 오브젝트 = {'키':'값'}
+        var 오브젝트2 = new Object()
+
+        // Map : 오브젝트와 유사 (키와 값으로 구성)
+        // 차이점 > 키값의 자료형이 자유롭다.(오브젝트는 문자열)
+        var 맵 = new Map();
+
+        // Map에 추가하려면 set()
+        맵.set(1,'일')
+        맵.set(2,'이')
+        맵.set(3,'삼')
+        맵.set(3,'삼!') // 키 중첩불가. 마지막 작성 내용으로 업데이트됨
+        console.log(맵)
+
+        // 제거한다면 delete()
+        맵.delete(2)
+        console.log(맵)
+
+        맵.foreach((값,키) => {
+            console.log(`${키} => ${값}`)
+        })
+
+
+        // Set : 배열인데 중복을 막아주는 배열
+        //  값을 하나씩 추가한다고 할 때, 중복값이 들어오는걸 막고자 한다
+        let 배열3 = [1,2,2,2,3]
+        let set = new Set()
+
+        // 추가할땐 add()
+        set.add(1)
+        set.add(2)
+        set.add(2)
+        set.add(2)
+        set.add(2)
+        set.add(3)
+
+        console.log(set) 
+
+        // 있는지 검사 has
+        console.log(set.has(4))
+        console.log(set.has(3))
+
+        // 모두 사용하려면 반복문
+        set.forEach((값)=> {
+            console.log(값)
+        })
+    </script>
+</body>
+</html>

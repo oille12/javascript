@@ -31,7 +31,7 @@ nav {
     height: 120px;
     margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -42,7 +42,7 @@ nav {
 
 .first-nav li {
     display: inline-block;
-    padding: 0 16px;
+    padding: 0 15px;
     font-size: 13px;
     border-right: 1px solid lightgray;
 }
@@ -68,30 +68,38 @@ nav {
 .second-nav a {
     text-decoration: none;
     color: #333;    
-    padding: 10px 10px 26px 12px;
+    padding: 10px 16px 22px 16px;
 }
 
-.second-nav a:hover {
-    text-decoration: underline;
-    color: rgb(113, 185, 113);
+.second-nav-show {
+    text-decoration: underline !important;
+    color: rgb(113, 185, 113) !important;
     background: rgb(44, 42, 41);
 }
 
 .down-nav {
     background-color: rgb(44,42,41);
     width: 100%;
-    transition: all 0.5s;
-    height: 0;  /* hover시 보이게 하기 */
+    max-height: 0;  /* hover시 보이게 하기 */
     visibility: hidden;
-    
+    transition: max-height 1s;
+}
+
+.down-nav-show {
+    max-height: 3000px;
+    visibility: visible;
 }
 
 .down-nav-inner {
-    display: flex !important;
+    display: flex;
     width: 1100px;
     margin: auto;
     color: white;
     padding: 15px;
+}
+
+.down-nav-inner div {
+    width: 200px;
 }
 
 .down-nav ul {
@@ -103,9 +111,7 @@ nav {
 .down-nav li {
     list-style-type: none;
     font-size: small;
-    padding: 3p 10px;
     color: lightgray;
-
 }
 
 .dump {
@@ -164,9 +170,17 @@ nav {
     left: 18%;
     top: 68%;
     background: transparent;
-    border: 2px solid green;
+    border: 2px solid rgb(19,54,45);
     padding: 10px 30px;
     border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.section-1-btn:hover {
+    color: white;
+    background: rgb(19,54,45);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .section-4 {
